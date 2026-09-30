@@ -1,0 +1,11 @@
+barbeiros (id, nome, ativo) OK
+
+servicos (id, nome, duracao_minutos, preco) OK
+
+horarios_trabalho (id, barbeiro_id FK, dia_semana, hora_inicio, hora_fim) OK
+
+bloqueios (id, barbeiro_id FK, data_inicio, data_fim, motivo)  -- folgas, feriados, etc
+
+clientes (id, nome, telefone) OK
+
+agendamentos (id, cliente_id FK, barbeiro_id FK, servico_id FK, data_hora_inicio, data_hora_fim, status) OK
