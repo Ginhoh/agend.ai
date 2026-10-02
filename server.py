@@ -5,6 +5,7 @@ from tools.barbeiros import barbeiros_function
 from tools.servicos import servicos_function
 from tools.horarios_trabalho import horarios_trabalho_function
 from tools.agendamentos import agendamentos_function
+from tools.bloqueios import bloqueios_functions
 
 mcp = FastMCP("Consults db")
 
@@ -22,6 +23,9 @@ horarios_trabalho_function(mcp=mcp)
 
 # AGENDAMENTOS
 agendamentos_function(mcp=mcp)
+
+# BLOQUEIOS
+bloqueios_functions(mcp=mcp)
 
 if __name__ == "__main__":
     mcp.run()   
