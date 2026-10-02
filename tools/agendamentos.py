@@ -255,8 +255,10 @@ Status: {status}"""
                 elif len(marcados) > 0:
                     for hora in marcados:
                         hora = datetime.strptime(f'{hora}',"%d/%m/%Y %H:%M")
-                        
-                        if hora == horario_atual or horario_atual - hora <= timedelta(days=0, hours=0, minutes=25):
+                        calculo = horario_atual - hora
+                        if hora > horario_atual:
+                            calculo = hora - horario_atual
+                        if hora == horario_atual or calculo <= timedelta(days=0, hours=0, minutes=25):
                             horario_atual += duracao_servico
                             break
                         elif horario_atual.strftime("%d/%m/%Y %H:%M") not in horarios_possiveis and horario_atual.strftime("%d/%m/%Y %H:%M") not in marcados:  
