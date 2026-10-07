@@ -221,13 +221,9 @@ Status: {status}"""
             for id, nome, duracao_minutos in dados_servico:
                 servicos[id] = (nome,duracao_minutos)
 
-            cursor.execute("""SELECT hora_inicio, hora_fim FROM horarios_trabalho WHERE dia_semana = (?) AND barbeiro_id = (?)""", (dia_semana_data(data),id,))
+            cursor.execute("""SELECT hora_inicio, hora_fim FROM horarios_trabalho WHERE dia_semana = (?) AND barbeiro_id = (?)""", (dia_semana_data(data),barbeiro_id,))
             dados_horarios = cursor.fetchall()
             hora_inicio, hora_fim = dados_horarios[0]
-            cont = 1
-            # for id, barbeiro_id, hora_inicio, hora_fim in dados_horarios:
-            #     horarios[cont] = (barbeiro_id, hora_inicio, hora_fim)
-            #     cont += 1
 
             cursor.execute("""SELECT * FROM agendamentos 
             WHERE data_hora_inicio LIKE ? AND barbeiro_id = ?""",(f'{data}%',barbeiro_id,))
@@ -240,6 +236,12 @@ Status: {status}"""
 
             inicio_janela = datetime.strptime(f'{data} {hora_inicio}',"%d/%m/%Y %H:%M")
             fim_janela = datetime.strptime(f'{data} {hora_fim}',"%d/%m/%Y %H:%M")
+
+            cursor.execute("""SELECT nome, data_hora_inicio, data_hora_fim  FROM bloqueios WHERE barbeiro_id = ?""",(barbeiro_id,))
+            dados_bloqueios = cursor.fetchall()
+            bloqueios = []
+            for nome, dt_ini, dt_fnl in dados_bloqueios:
+                bloqueios.append({"nome":nome, 'inicio': datetime.strptime(f'{dt_ini}',"%d/%m/%Y %H:%M"), 'fim':datetime.strptime(f'{dt_fnl}',"%d/%m/%Y %H:%M")})
         
             nome_servico, duracao_servico = servicos[1]
             duracao_servico = timedelta(minutes=int(duracao_servico))
@@ -253,9 +255,17 @@ Status: {status}"""
                 if horario_atual >= fim_janela: 
                     break
                 elif len(marcados) > 0:
+                    for indisponivel in bloqueios:
+                                while indisponivel['fim'] >= horario_atual >= indisponivel['inicio']:
+                                    horarios_possiveis.append(indisponivel['nome'])
+                                    horario_atual += duracao_servico 
+
+
                     for hora in marcados:
                         hora = datetime.strptime(f'{hora}',"%d/%m/%Y %H:%M")
+
                         calculo = horario_atual - hora
+
                         if hora > horario_atual:
                             calculo = hora - horario_atual
                         if hora == horario_atual or calculo <= timedelta(days=0, hours=0, minutes=25):
@@ -269,10 +279,6 @@ Status: {status}"""
                     horarios_possiveis.append(horario_atual.strftime("%d/%m/%Y %H:%M"))
                     horario_atual += duracao_servico
         
-        
-            # for horarios in horarios_possiveis:
-            #     print(horarios)
-
 
         except Exception as e:
             return f"ERRO: {e}"
