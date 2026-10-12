@@ -7,7 +7,7 @@ from tools.horarios_trabalho import horarios_trabalho_function
 from tools.agendamentos import agendamentos_function
 from tools.bloqueios import bloqueios_functions
 
-mcp = FastMCP("Consults db")
+mcp = FastMCP("Agend.AI")
 
 # CLIENTES
 clientes_functions(mcp=mcp)
