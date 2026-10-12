@@ -240,6 +240,7 @@ Status: {status}"""
             cursor.execute("""SELECT nome, data_hora_inicio, data_hora_fim  FROM bloqueios WHERE barbeiro_id = ?""",(barbeiro_id,))
             dados_bloqueios = cursor.fetchall()
             bloqueios = []
+
             for nome, dt_ini, dt_fnl in dados_bloqueios:
                 bloqueios.append({"nome":nome, 'inicio': datetime.strptime(f'{dt_ini}',"%d/%m/%Y %H:%M"), 'fim':datetime.strptime(f'{dt_fnl}',"%d/%m/%Y %H:%M")})
         
@@ -249,7 +250,7 @@ Status: {status}"""
             marcados = []
 
             for cortes in agendamentos:
-                marcados.append(agendamentos[cortes]['Data'].strftime("%d/%m/%Y %H:%M"))
+                marcados.append({'data':agendamentos[cortes]['Data'],'servico':int(agendamentos[cortes]['Serviço'])})
         
             while True:
                 if horario_atual >= fim_janela: 
@@ -262,15 +263,17 @@ Status: {status}"""
 
 
                     for hora in marcados:
-                        hora = datetime.strptime(f'{hora}',"%d/%m/%Y %H:%M")
+                        selecionado = hora['data']
+                                    
+                        calculo = horario_atual - selecionado
 
-                        calculo = horario_atual - hora
-
-                        if hora > horario_atual:
-                            calculo = hora - horario_atual
-                        if hora == horario_atual or calculo <= timedelta(days=0, hours=0, minutes=25):
-                            horario_atual += duracao_servico
-                            break
+                        if selecionado > horario_atual:
+                                        calculo = selecionado - horario_atual
+                                        
+                        if selecionado == horario_atual or calculo <= timedelta(days=0, hours=0, minutes=25):
+                                        horario_atual += timedelta(days=0, hours=0, minutes=servicos[hora['servico']][1])
+                                        break
+                        
                         elif horario_atual.strftime("%d/%m/%Y %H:%M") not in horarios_possiveis and horario_atual.strftime("%d/%m/%Y %H:%M") not in marcados:  
                             horarios_possiveis.append(horario_atual.strftime("%d/%m/%Y %H:%M"))
 
