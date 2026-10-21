@@ -4,6 +4,7 @@ from langchain_groq.chat_models import ChatGroq
 from langchain.agents import create_agent
 from langchain_google_genai.chat_models import ChatGoogleGenerativeAI
 from langchain_mcp_adapters.client import MultiServerMCPClient
+from langgraph.checkpoint.memory import InMemorySaver
 import asyncio
 
 load_dotenv()
@@ -25,7 +26,8 @@ async def main():
         ChatGoogleGenerativeAI(model='gemini-2.5-flash'),
         name="Age Assistant",
         system_prompt=PROMPT,
-        tools = tools
+        tools = tools,
+        checkpointer=InMemorySaver()
     )
 
     async def chat(mensagem: str) -> str:
@@ -35,8 +37,8 @@ async def main():
         )
         resultado = resposta['messages'][-1].content
 
-        if isinstance(resultado, dict):
-             return resultado['text']
+        if isinstance(resultado, list):
+             return resultado[0]['text']
         else:
             return resultado
 
