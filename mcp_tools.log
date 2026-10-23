@@ -1,0 +1,71 @@
+22/10/2026 : 21:37:06 | INFO | CHAMADA | buscar_barbeiro_pelo_nome | args=() kwargs={'nome': 'Carlos'}
+22/10/2026 : 21:37:06 | INFO | OK        | buscar_barbeiro_pelo_nome | 21 ms | retorno=Nome não encontrado
+22/10/2026 : 21:39:42 | INFO | CHAMADA | buscar_barbeiro_pelo_nome | args=() kwargs={'nome': 'Carlos'}
+22/10/2026 : 21:39:42 | INFO | OK        | buscar_barbeiro_pelo_nome | 4 ms | retorno=Nome não encontrado
+22/10/2026 : 21:39:49 | INFO | CHAMADA | listar_barbeiros | args=() kwargs={}
+22/10/2026 : 21:39:49 | INFO | OK        | listar_barbeiros | 4 ms | retorno={1: 'Carlos Silva | Ativo', 2: 'Fernando Souza | Ativo', 3: 'Adonias Lima | Ativo'}
+22/10/2026 : 21:41:21 | INFO | CHAMADA | adicionar_bloqueio | args=() kwargs={'nome': 'Viagem', 'barbeiro_id': 1, 'data_hora_inicio': '26/10/2026 09:00', 'data_hora_fim': '26/10/2026 18:00'}
+22/10/2026 : 21:41:21 | INFO | OK        | adicionar_bloqueio | 15 ms | retorno=Bloqueio adicionado com sucesso
+22/10/2026 : 21:44:22 | INFO | CHAMADA | buscar_barbeiro_pelo_nome | args=() kwargs={'nome': 'carlos'}
+22/10/2026 : 21:44:22 | INFO | OK        | buscar_barbeiro_pelo_nome | 3 ms | retorno=Nome não encontrado
+22/10/2026 : 21:44:34 | INFO | CHAMADA | buscar_barbeiro_pelo_nome | args=() kwargs={'nome': 'Adonias'}
+22/10/2026 : 21:44:34 | INFO | OK        | buscar_barbeiro_pelo_nome | 2 ms | retorno=Nome não encontrado
+22/10/2026 : 21:44:50 | INFO | CHAMADA | buscar_barbeiro_pelo_nome | args=() kwargs={'nome': 'adonias'}
+22/10/2026 : 21:44:50 | INFO | OK        | buscar_barbeiro_pelo_nome | 2 ms | retorno=Nome não encontrado
+22/10/2026 : 21:45:38 | INFO | CHAMADA | buscar_barbeiro_pelo_nome | args=() kwargs={'nome': 'adonias'}
+22/10/2026 : 21:45:38 | INFO | OK        | buscar_barbeiro_pelo_nome | 2 ms | retorno=Nome não encontrado
+22/10/2026 : 21:46:43 | INFO | CHAMADA | buscar_barbeiro_pelo_nome | args=() kwargs={'nome': 'carlos'}
+22/10/2026 : 21:46:43 | INFO | OK        | buscar_barbeiro_pelo_nome | 5 ms | retorno=1. Carlos Silva | Ativo
+22/10/2026 : 21:46:58 | INFO | CHAMADA | buscar_barbeiro_pelo_nome | args=() kwargs={'nome': 'Adonias'}
+22/10/2026 : 21:46:58 | INFO | OK        | buscar_barbeiro_pelo_nome | 3 ms | retorno=3. Adonias Lima | Ativo
+22/10/2026 : 21:47:05 | INFO | CHAMADA | buscar_barbeiro_pelo_nome | args=() kwargs={'nome': 'Leilton\n'}
+22/10/2026 : 21:47:05 | INFO | OK        | buscar_barbeiro_pelo_nome | 2 ms | retorno=Nome não encontrado
+22/10/2026 : 22:02:28 | INFO | CHAMADA | buscar_barbeiro_pelo_nome | args=() kwargs={'nome': 'Adonias'}
+22/10/2026 : 22:02:28 | INFO | OK        | buscar_barbeiro_pelo_nome | 13 ms | retorno=3. Adonias Lima | Ativo
+22/10/2026 : 22:02:34 | INFO | CHAMADA | agendamentos_disponiveis_dia_por_barbeiro | args=() kwargs={'barbeiro_id': 3, 'data': '23/10/2026'}
+22/10/2026 : 22:02:34 | INFO | OK        | agendamentos_disponiveis_dia_por_barbeiro | 16 ms | retorno=['23/10/2026 09:00', '23/10/2026 09:30', '23/10/2026 10:00', '23/10/2026 10:30', '23/10/2026 11:00', '23/10/2026 11:30', '23/10/2026 12:00', '23/10/2026 12:30', '23/10/2026 13:00', '23/10/2026 13:30', '23/10/2026 14:00', '23/10/2026 14:30', '23/10/2026 15:00', '23/10/2026 15:30', '23/10/2026 16:00',
+22/10/2026 : 22:04:09 | INFO | CHAMADA | buscar_servico_pelo_nome | args=() kwargs={'nome': 'Corte de Cabelo'}
+22/10/2026 : 22:04:09 | ERROR | ERRO  | buscar_servico_pelo_nome
+Traceback (most recent call last):
+  File "C:\Users\igorj\OneDrive\Documentos\VsCode\ConsultaDB\tools\servicos.py", line 31, in buscar_servico_pelo_nome
+    cursor.execute("SELECT id, nome, duracao_minutos, preco FROM servicos WHERE nome LIKE '%(?)%'",(nome.title()))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.ProgrammingError: Incorrect number of bindings supplied. The current statement uses 0, and there are 15 supplied.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\igorj\OneDrive\Documentos\VsCode\ConsultaDB\loggs\decorators.py", line 11, in wrapper
+    resultado = func(*args, **kwargs)
+  File "C:\Users\igorj\OneDrive\Documentos\VsCode\ConsultaDB\tools\servicos.py", line 40, in buscar_servico_pelo_nome
+    return output
+           ^^^^^^
+UnboundLocalError: cannot access local variable 'output' where it is not associated with a value
+22/10/2026 : 22:06:36 | INFO | CHAMADA | buscar_servico_pelo_nome | args=() kwargs={'nome': 'Corte de Cabelo'}
+22/10/2026 : 22:06:36 | ERROR | ERRO  | buscar_servico_pelo_nome
+Traceback (most recent call last):
+  File "C:\Users\igorj\OneDrive\Documentos\VsCode\ConsultaDB\tools\servicos.py", line 31, in buscar_servico_pelo_nome
+    cursor.execute("SELECT id, nome, duracao_minutos, preco FROM servicos WHERE nome LIKE '%(?)%'",(nome.title()))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.ProgrammingError: Incorrect number of bindings supplied. The current statement uses 0, and there are 15 supplied.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\igorj\OneDrive\Documentos\VsCode\ConsultaDB\loggs\decorators.py", line 11, in wrapper
+    resultado = func(*args, **kwargs)
+  File "C:\Users\igorj\OneDrive\Documentos\VsCode\ConsultaDB\tools\servicos.py", line 40, in buscar_servico_pelo_nome
+    return output
+           ^^^^^^
+UnboundLocalError: cannot access local variable 'output' where it is not associated with a value
+22/10/2026 : 22:07:47 | INFO | CHAMADA | buscar_servico_pelo_nome | args=() kwargs={'nome': 'Corte de Cabelo'}
+22/10/2026 : 22:07:48 | ERROR | ERRO  | buscar_servico_pelo_nome
+Traceback (most recent call last):
+  File "C:\Users\igorj\OneDrive\Documentos\VsCode\ConsultaDB\loggs\decorators.py", line 11, in wrapper
+    resultado = func(*args, **kwargs)
+  File "C:\Users\igorj\OneDrive\Documentos\VsCode\ConsultaDB\tools\servicos.py", line 31, in buscar_servico_pelo_nome
+    cursor.execute("SELECT id, nome, duracao_minutos, preco FROM servicos WHERE nome LIKE '%(?)%'",(nome.title()))
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.ProgrammingError: Incorrect number of bindings supplied. The current statement uses 0, and there are 15 supplied.
+22/10/2026 : 22:09:24 | INFO | CHAMADA | buscar_servico_pelo_nome | args=() kwargs={'nome': 'Corte de Cabelo'}
+22/10/2026 : 22:09:24 | INFO | OK        | buscar_servico_pelo_nome | 3 ms | retorno=1. Corte de Cabelo | 30min | R$35.00

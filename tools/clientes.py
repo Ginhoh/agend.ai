@@ -1,7 +1,9 @@
 from sqlite3 import Connection, Cursor
+from loggs.decorators import log_tool
 
 def clientes_functions(mcp):
     @mcp.tool()
+    @log_tool
     def buscar_cliente_pelo_id(id: int) -> str:
         """Buscar um cliente pelo seu id"""
         output = "Cliente não encontrado"
@@ -20,6 +22,7 @@ def clientes_functions(mcp):
             return output
         
     @mcp.tool()
+    @log_tool
     def buscar_cliente_pelo_nome(nome: str) -> str:
         """Busca um cliente pelo seu nome"""
         try:
@@ -38,6 +41,7 @@ def clientes_functions(mcp):
             return output
 
     @mcp.tool()
+    @log_tool
     def buscar_cliente_pelo_email(email: str) -> str:
         """Essa ferramenta busca por um cadastro através de um email"""
         try:
@@ -56,6 +60,7 @@ def clientes_functions(mcp):
             return output
 
     @mcp.tool()
+    @log_tool
     def listar_clientes()-> dict:
         """Listar todos os clientes cadastrados"""
         try:
@@ -78,6 +83,7 @@ def clientes_functions(mcp):
 
 
     @mcp.tool()
+    @log_tool
     def adicionar_cliente(nome: str, email: str, telefone:str, data_nascimento:str) -> str:
         """"
         Cadastrar um novo cliete
@@ -98,6 +104,7 @@ def clientes_functions(mcp):
         return "Dado inserido com sucesso!"
 
     @mcp.tool()
+    @log_tool
     def remover_cliente_pelo_id(id:int)->str:
 
         """Remove cliente pelo id"""
@@ -116,6 +123,7 @@ def clientes_functions(mcp):
             return output
 
     @mcp.tool()
+    @log_tool
     def alterar_nome_cliente_pelo_id(id: int, nome:str)->str:
         """Altera o nome do cliente pelo id"""
         output = "Não foi possível alterar o nome do cliente"
@@ -135,6 +143,7 @@ def clientes_functions(mcp):
             return output
 
     @mcp.tool()
+    @log_tool
     def alterar_email_cliente_pelo_id(id: int, email:str)->str:
         """Altera o email do cliente pelo id"""
         output = "Não foi possível alterar o email do cliente"
@@ -153,6 +162,7 @@ def clientes_functions(mcp):
             return output
 
     @mcp.tool()
+    @log_tool
     def alterar_numero_cliente_pelo_id(id: int, telefone:str)->str:
         """Altera o phone do cliente pelo id"""
         output = "Não foi possível alterar o telefone do cliente"
@@ -170,6 +180,7 @@ def clientes_functions(mcp):
             return output
 
     @mcp.tool()
+    @log_tool
     def alterar_aniversario_pelo_id_(id: int, data:str)->str:
         """Altera o nome do cliente pelo id"""
         

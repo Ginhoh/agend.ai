@@ -1,8 +1,9 @@
 from sqlite3 import Cursor, Connection
-
+from loggs.decorators import log_tool
 def barbeiros_function(mcp):
     
     @mcp.tool()
+    @log_tool
     def listar_barbeiros()-> dict:
         """Essa função retorna todos os dados da parte de barbeiros"""
         try:
@@ -24,6 +25,7 @@ def barbeiros_function(mcp):
         return output
 
     @mcp.tool()
+    @log_tool
     def adicionar_barbeiro(nome: str) -> str:
         """Adicionar um novo barbeiro"""
         try:
@@ -42,6 +44,7 @@ def barbeiros_function(mcp):
         return "Barbeiro inserido com sucesso!"
 
     @mcp.tool()
+    @log_tool
     def buscar_barbeiro_pelo_id(id: int) -> str:
         """Pesquisar por um barbeiro pelo seu id"""
         try:
@@ -60,6 +63,7 @@ def barbeiros_function(mcp):
             return output
 
     @mcp.tool()
+    @log_tool
     def buscar_barbeiro_pelo_nome(nome: str) -> str:
         """Essa função busca um barbeiro pelo nome"""
         output = "Nome não encontrado"
@@ -67,7 +71,7 @@ def barbeiros_function(mcp):
             db = Connection('db.db')
             cursor = Cursor(db)
 
-            cursor.execute(f"SELECT id, nome, ativo FROM barbeiros WHERE nome = (?)",(nome.title(),))
+            cursor.execute(f"SELECT id, nome, ativo FROM barbeiros WHERE nome LIKE (?)",(f'%{nome.title()}%',))
             data = cursor.fetchall()
             for id, nome_b, ativo in data:
                 output = f'{id}. {nome_b} | {"Ativo" if ativo == 1 else "Inativo"}'
@@ -78,6 +82,7 @@ def barbeiros_function(mcp):
             return output
 
     @mcp.tool()
+    @log_tool
     def desativar_barbeiro(id: int) -> str:
         """Desativar um barbeiro pelo seu id"""
         try:
@@ -95,6 +100,7 @@ def barbeiros_function(mcp):
             return output
 
     @mcp.tool()
+    @log_tool
     def ativar_barbeiro(id: int) -> str:
         """Essa função sativa um barbeiro pelo seu id"""
         try:
@@ -112,6 +118,7 @@ def barbeiros_function(mcp):
             return output
 
     @mcp.tool()
+    @log_tool
     def remover_barbeiro(id: int) -> str:
         """Essa função exclui um barbeiro pelo id"""
         try:
@@ -128,6 +135,7 @@ def barbeiros_function(mcp):
             return output
 
     @mcp.tool()
+    @log_tool
     def alterar_nome_barbeiro_pelo_id(id: int, name:str)->str:
         """Altera o nome do barbeiro pelo id"""
         output = "Não foi possível alterar o nome do barbeiro"

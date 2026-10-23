@@ -1,9 +1,10 @@
 from sqlite3 import Connection, Cursor
-
+from loggs.decorators import log_tool
 
 def servicos_function(mcp):
     """Caso deseje alterar o nome, adicione um novo serviço"""
     @mcp.tool()
+    @log_tool
     def adicionar_servico(nome: str, duracao_minutos: int, preco: float )-> str:
         """Adiciona um novo serviço"""
         try:
@@ -20,24 +21,28 @@ def servicos_function(mcp):
             db.close()
 
     @mcp.tool()
+    @log_tool
     def buscar_servico_pelo_nome(nome: str)-> str:
         """Busca o serviço pelo seu nome"""
         try:
             db = Connection('db.db')
             cursor = Cursor(db)
 
-            cursor.execute("SELECT id, nome, duracao_minutos, preco FROM servicos WHERE nome LIKE '%(?)%'",(nome.title()))
+            cursor.execute("SELECT id, nome, duracao_minutos, preco FROM servicos WHERE nome LIKE (?)",(f'%{nome.title()}%',))
             data = cursor.fetchall()
             output = "Nome não encontrado"
             for id, nome_servico, duracao, preco in data:
                 output = f'{id}. {nome_servico} | {duracao}min | R${preco:.2f}'
+
+            return output
         except TypeError as e:
             return (f"ERRO: {e}")
         finally:
             db.close()
-            return output
+            
 
     @mcp.tool()
+    @log_tool
     def pesquisar_servico_pelo_id(id: str)-> str:
             """Essa função retorna um dado da query"""
             try:
@@ -58,6 +63,7 @@ def servicos_function(mcp):
                 return output
 
     @mcp.tool()
+    @log_tool
     def alterar_preco_servico_pelo_id(preco: float, id:int)->str:
         """Alterar o preço do serviço pesquisando pelo seu nome"""
         try:
@@ -74,6 +80,7 @@ def servicos_function(mcp):
             return output
 
     @mcp.tool()
+    @log_tool
     def alterar_duracao_servico(duracao: int, id:int)->str:
         """Essa função altera a duração do servico"""
         try:
@@ -90,6 +97,7 @@ def servicos_function(mcp):
             return output
 
     @mcp.tool()
+    @log_tool
     def listar_servicos()->dict:
         """Essa função retorna todos os serviços cadastrados"""
         try:
@@ -108,6 +116,7 @@ def servicos_function(mcp):
             return output
 
     @mcp.tool()
+    @log_tool
     def remover_servico_pelo_id(id:int)->str:
         """Essa função deleta um serviço pelo id"""
         

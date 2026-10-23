@@ -5,6 +5,8 @@ from langchain.agents import create_agent
 from langchain_google_genai.chat_models import ChatGoogleGenerativeAI
 from langchain_mcp_adapters.client import MultiServerMCPClient
 from langgraph.checkpoint.memory import InMemorySaver
+from langchain.tools import tool
+from datetime import datetime
 import asyncio
 
 load_dotenv()
@@ -13,6 +15,17 @@ with open('agent/system_prompt.md', 'r', encoding='utf-8') as file:
     PROMPT = file.read()
 
 async def main():
+    @tool
+    def get_data():
+         """Quando precisar consultar a data atual, utilize essa função. 
+         Será muito comum em casos que o usuário não informar o ano, ou quando ele informar o dia da semana.
+         Apenas neste caso estará no formato YYYY-MM-DD"""
+
+         return datetime.today()
+
+
+
+
     client = MultiServerMCPClient({
             'agend.ai': {
                 'command': 'python',
@@ -22,6 +35,8 @@ async def main():
         })
 
     tools = await client.get_tools()
+    tools.append(get_data)
+    
     agente = create_agent(
         ChatGoogleGenerativeAI(model='gemini-2.5-flash'),
         name="Age Assistant",

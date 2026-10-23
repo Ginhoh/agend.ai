@@ -1,4 +1,5 @@
 from sqlite3 import Cursor, Connection
+from loggs.decorators import log_tool
 
 def horarios_trabalho_function(mcp):
     """
@@ -6,6 +7,7 @@ def horarios_trabalho_function(mcp):
     """
 
     @mcp.tool()
+    @log_tool
     def adicionar_horario_trabalho(barbeiro_id: int,dia_semana:str, hora_inicio : str, hora_fim: str)->str:
         """Cria um novo horário de trabalho"""
         output = "Não foi possível criar o horário de trabalho, tente novamente!"
@@ -24,6 +26,7 @@ def horarios_trabalho_function(mcp):
             return output
 
     @mcp.tool()
+    @log_tool
     def remover_horario_trabalho_pelo_id(id)->str:
         """Remove horário de trabalho pelo id do horário"""
         output = 'Não foi possível remover.'
@@ -42,6 +45,7 @@ def horarios_trabalho_function(mcp):
             return output
 
     @mcp.tool()
+    @log_tool
     def listar_horarios_trabalho()->dict:
         """Exibe todos horários de trabalho"""
         try:
@@ -63,6 +67,7 @@ def horarios_trabalho_function(mcp):
 
 
     @mcp.tool()
+    @log_tool
     def alterar_hora_inicio_pelo_id(id: int, hora_inicio:str)->str:
         """Altera hora de início do barbeiro pelo id do horário"""
         output = "Não foi possível alterar o horário inicial"
@@ -80,6 +85,7 @@ def horarios_trabalho_function(mcp):
             return output
 
     @mcp.tool()
+    @log_tool
     def alterar_hora_final_pelo_id(id: int, hora_final:str)->str:
             """Altera hora de término do barbeiro pelo id do horário"""
             output = "Não foi possível alterar o horário final"

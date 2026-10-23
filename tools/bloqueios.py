@@ -1,7 +1,8 @@
 from sqlite3 import Connection, Cursor
-
+from loggs.decorators import log_tool
 def bloqueios_functions(mcp):
     @mcp.tool()
+    @log_tool
     def buscar_bloqueio_pelo_id(id: int) -> str:
         """Buscar um bloqueio pelo seu id"""
         output = "Bloqueio não encontrado"
@@ -20,6 +21,7 @@ def bloqueios_functions(mcp):
             return output
         
     @mcp.tool()
+    @log_tool
     def buscar_bloqueio_pelo_nome(nome: str) -> str:
         """Busca um bloqueio pelo seu nome"""
         try:
@@ -38,6 +40,7 @@ def bloqueios_functions(mcp):
             return output
 
     @mcp.tool()
+    @log_tool
     def buscar_bloquei_pelo_barbeiro_id(barbeiro_id: str) -> str:
         """Essa ferramenta busca por um bloqueio através do id do barbeiro"""
         output = "Bloqueio não encontrado"
@@ -57,6 +60,7 @@ def bloqueios_functions(mcp):
             return output
 
     @mcp.tool()
+    @log_tool
     def listar_bloqueios()-> dict:
         """Listar todos os bloqueios cadastrados"""
         output = {}
@@ -79,6 +83,7 @@ def bloqueios_functions(mcp):
 
 
     @mcp.tool()
+    @log_tool
     def adicionar_bloqueio(nome: str, barbeiro_id: int, data_hora_inicio:str, data_hora_fim:str) -> str:
         """"
         Cadastrar um novo bloqueio
@@ -97,6 +102,7 @@ def bloqueios_functions(mcp):
             db.close()
 
     @mcp.tool()
+    @log_tool
     def remover_bloqueio_pelo_id(id:int)->str:
 
         """Remove bloqueio pelo seu id"""
@@ -115,6 +121,7 @@ def bloqueios_functions(mcp):
             return output
 
     @mcp.tool()
+    @log_tool
     def alterar_nome_bloqueio_pelo_id(id: int, nome:str)->str:
         """Altera o nome do bloqueio pelo id"""
         output = "Não foi possível alterar o nome do bloqueio"
@@ -134,6 +141,7 @@ def bloqueios_functions(mcp):
             return output
 
     @mcp.tool()
+    @log_tool
     def alterar_horario_bloqueio_pelo_id(id: int, data_hora_inicio:str, data_hora_fim)->str:
         """Altera o horário do bloqueio pelo id"""
         output = "Não foi possível alterar o bloqueio do barbeiro"

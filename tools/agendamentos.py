@@ -1,6 +1,8 @@
 from sqlite3 import Cursor, Connection
 from datetime import date, datetime, timedelta
 
+from loggs.decorators import log_tool
+
 def dia_semana_data(data:str)->str:
         # Cria uma data (ano, mês, dia) TEM QUE SER DO TIPO INTEIRO
         dia = int(data[:2])
@@ -24,6 +26,7 @@ def agendamentos_function(mcp):
 
     # Configurar padrões do agente para os status
     @mcp.tool() # Arrumar serviços
+    @log_tool
     def agendar_servico(id_cliente: int, barbeiro_id:int, servico:int, data_hora_inicio:str, data_hora_fim: str)->str:
         """Adiciona um agendamento de serviço na tabela"""
 
@@ -46,6 +49,7 @@ def agendamentos_function(mcp):
             return output
 
     @mcp.tool() 
+    @log_tool
     def cancelar_agendamento(id:int)->str:
         """Remove um agendamento de serviço na tabela"""
 
@@ -67,6 +71,7 @@ def agendamentos_function(mcp):
             return output
 
     @mcp.tool() 
+    @log_tool
     def alterar_data_agendamento_pelo_id(id:int, data_hora_inicio: str, data_hora_fim: str)->str:
         """Atualiza o horário de um agendamento pelo id"""
 
@@ -88,6 +93,7 @@ def agendamentos_function(mcp):
             return output
 
     @mcp.tool()
+    @log_tool
     def consultar_agendamento(id: int) -> str:
         """Busca os detalhes de um agendamento específico"""
         output = "Não foi possível consultar o agendamento"
@@ -114,6 +120,7 @@ Status: {status}"""
             return output
 
     @mcp.tool()
+    @log_tool
     def listar_agendamento_cliente(id_cliente: int) -> str:
         """Lista agendamentos de um cliente (histórico/futuro)"""
         output = "Não foi possível consultar o agendamento"
@@ -141,6 +148,7 @@ Status: {status}"""
 
 
     @mcp.tool()
+    @log_tool
     def listar_agendamento_barbeiro(barbeiro_id: int) -> str:
         """Lista agendamentos de um cliente (histórico/futuro)"""
         output = "Não foi possível consultar o agendamento"
@@ -167,6 +175,7 @@ Status: {status}"""
             return output
 
     @mcp.tool()
+    @log_tool
     def concluir_agendamento(id: int) -> str:
         """Marca o agendamento como concluído depois que o atendimento realmente aconteceu"""
         output = "Não foi possível concluir o agendamento"
@@ -187,6 +196,7 @@ Status: {status}"""
             return output
 
     @mcp.tool()
+    @log_tool
     def marcar_no_show(id: int) -> str:
         """Marca o agendamento (pelo id) como que o cliente não apareceu"""
         output = "Não foi possível atuializar o agendamento"
@@ -207,6 +217,7 @@ Status: {status}"""
             return output
 
     @mcp.tool()
+    @log_tool
     def agendamentos_disponiveis_dia_por_barbeiro(barbeiro_id: int,data: str) -> list:
         """Consulta datas disponíveis de APENAS UM BARBEIRO em um determinado dia. Formato da data: DD/MM/YYYY"""
         horarios_possiveis = []
@@ -291,6 +302,7 @@ Status: {status}"""
             return horarios_possiveis
 
     @mcp.tool()
+    @log_tool
     def listar_agendamentos_dia(data: str):
         """Lista serviços agendados em um determinado dia."""
         try:
