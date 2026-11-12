@@ -38,7 +38,7 @@ async def main():
     tools.append(get_data)
     
     agente = create_agent(
-        ChatGoogleGenerativeAI(model='gemini-2.5-flash'),
+        ChatGoogleGenerativeAI(model='gemini-3.5-flash-lite'),
         name="Age Assistant",
         system_prompt=PROMPT,
         tools = tools,
@@ -62,7 +62,7 @@ async def main():
             # o to_thread é usado para executar a função input de forma assíncrona, permitindo que o loop continue sem bloquear a execução do programa.
             if user.strip() == '' or user.strip().lower() == 'sair':
                 break
-            print(await chat(user)) # Executar de manera assíncrona
+            print(f'\nAGE: {await chat(user)}\n') # Executar de manera assíncrona
 
 
 # System template

@@ -41,23 +41,26 @@ def bloqueios_functions(mcp):
 
     @mcp.tool()
     @log_tool
-    def buscar_bloquei_pelo_barbeiro_id(barbeiro_id: str) -> str:
+    def buscar_bloqueio_pelo_barbeiro_id(barbeiro_id: int) -> dict:
         """Essa ferramenta busca por um bloqueio através do id do barbeiro"""
-        output = "Bloqueio não encontrado"
+        output = {}
         try:
                 db = Connection('db.db')
                 cursor = Cursor(db)
         
-                cursor.execute(f"SELECT nome, barbeiro_id, data_hora_inicio, data_hora_fim FROM bloqueios WHERE id = {barbeiro_id}")
+                cursor.execute(f"SELECT nome, barbeiro_id, data_hora_inicio, data_hora_fim FROM bloqueios WHERE barbeiro_id = {barbeiro_id}")
                 data = cursor.fetchall()
-                for nome, barbeiro_id, data_hora_inicio, data_hora_fim in data:
-                    output = f'Nome: {nome} Barbeiro ID: {barbeiro_id} {data_hora_inicio}-> {data_hora_fim}'
-                    
+                cont=1
+                for nome, barber_id, data_hora_inicio, data_hora_fim in data:
+                    output[cont] = f'Nome: {nome} Barbeiro ID: {barber_id} {data_hora_inicio}-> {data_hora_fim}'
+                    cont+=1
+
         except Exception as e:
             return f"ERRO: {e}"
         finally:
             db.close()
-            return output
+        
+        return output
 
     @mcp.tool()
     @log_tool
