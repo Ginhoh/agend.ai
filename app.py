@@ -1,8 +1,13 @@
+import os
+from dotenv import load_dotenv  
 import telebot
 from agent.brain import main
 import asyncio
 
-bot = telebot.TeleBot('9106630394:AAEr0Hti694M1yyMghJSP-Dc9GgMToVteGo')
+load_dotenv()
+TELEBOT_API_KEY = os.getenv("TELEBOT_API_KEY")
+
+bot = telebot.TeleBot(TELEBOT_API_KEY)
 
 @bot.message_handler(['start'])
 def start(msg:telebot.types.Message):

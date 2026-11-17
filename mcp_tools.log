@@ -34,3 +34,7 @@ Status: confirmado
 17/11/2026 : 09:55:25 | INFO | CHAMADA | adicionar_servico | args=() kwargs={'nome': 'Luzes', 'duracao_minutos': 90, 'preco': 60.0}
 17/11/2026 : 09:55:25 | INFO | OK        | adicionar_servico | 23 ms | retorno=Serviço inserido com sucesso!
 17/11/2026 : 09:55:25 | INFO | OK        | adicionar_servico | 38 ms | retorno=Serviço inserido com sucesso!
+17/11/2026 : 10:19:34 | INFO | CHAMADA | buscar_cliente_pelo_nome | args=() kwargs={'nome': 'Lucas'}
+17/11/2026 : 10:19:34 | INFO | OK        | buscar_cliente_pelo_nome | 2 ms | retorno=12. Lucas Barbosa | lucas.barbosa@email.com | tel: 71988001012 | data de nascimento: 01/10/1989 | Ativo: True
+17/11/2026 : 10:22:17 | INFO | CHAMADA | inativar_cliente_pelo_id_ | args=() kwargs={'id': 12}
+17/11/2026 : 10:22:17 | INFO | OK        | inativar_cliente_pelo_id_ | 8 ms | retorno=Cliente Inativado!

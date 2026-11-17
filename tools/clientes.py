@@ -197,3 +197,22 @@ def clientes_functions(mcp):
         finally:
             db.close()
             return output
+
+    @mcp.tool()
+    @log_tool
+    def inativar_cliente_pelo_id_(id: int)->str:
+        """Inativa o cliente pelo id"""
+        
+        output = "Não foi possível inativar esse cliente"
+        try:
+            db = Connection('db.db')
+            cursor = Cursor(db)
+
+            cursor.execute("""UPDATE clientes SET ativo = false WHERE id = (?)""",(id,))
+            output = "Cliente Inativado!"
+            db.commit()
+        except Exception as e:
+            return f"ERRO: {e}"
+        finally:
+            db.close()
+            return output
