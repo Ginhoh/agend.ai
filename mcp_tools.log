@@ -1,48 +1,36 @@
-11/11/2026 : 21:43:08 | INFO | CHAMADA | buscar_bloquei_pelo_barbeiro_id | args=() kwargs={'barbeiro_id': '2'}
-11/11/2026 : 21:43:08 | INFO | OK        | buscar_bloquei_pelo_barbeiro_id | 2 ms | retorno=Nome: Folga Barbeiro ID: 2 12/10/2026 08:00-> 12/10/2026 18:00
-11/11/2026 : 21:45:22 | INFO | CHAMADA | buscar_bloquei_pelo_barbeiro_id | args=() kwargs={'barbeiro_id': '2'}
-11/11/2026 : 21:45:22 | INFO | OK        | buscar_bloquei_pelo_barbeiro_id | 3 ms | retorno=Nome: Folga Barbeiro ID: 2 12/10/2026 08:00-> 12/10/2026 18:00
-11/11/2026 : 21:48:16 | INFO | CHAMADA | buscar_bloquei_pelo_barbeiro_id | args=() kwargs={'barbeiro_id': '2'}
-11/11/2026 : 21:48:16 | INFO | OK        | buscar_bloquei_pelo_barbeiro_id | 2 ms | retorno=Nome: Folga Barbeiro ID: 2 12/10/2026 08:00-> 12/10/2026 18:00
-11/11/2026 : 21:56:28 | INFO | CHAMADA | buscar_bloqueio_pelo_barbeiro_id | args=() kwargs={'barbeiro_id': '2'}
-11/11/2026 : 21:56:28 | INFO | OK        | buscar_bloqueio_pelo_barbeiro_id | 2 ms | retorno={'Bloqueio não encontrado'}
-11/11/2026 : 21:59:12 | INFO | CHAMADA | buscar_bloqueio_pelo_barbeiro_id | args=() kwargs={'barbeiro_id': '2'}
-11/11/2026 : 21:59:12 | INFO | OK        | buscar_bloqueio_pelo_barbeiro_id | 4 ms | retorno={'Bloqueio não encontrado'}
-11/11/2026 : 22:00:37 | INFO | CHAMADA | buscar_bloqueio_pelo_barbeiro_id | args=() kwargs={'barbeiro_id': '2'}
-11/11/2026 : 22:00:37 | INFO | OK        | buscar_bloqueio_pelo_barbeiro_id | 3 ms | retorno={'Bloqueio não encontrado'}
-11/11/2026 : 22:01:41 | INFO | CHAMADA | buscar_bloqueio_pelo_barbeiro_id | args=() kwargs={'barbeiro_id': 2}
-11/11/2026 : 22:01:41 | INFO | OK        | buscar_bloqueio_pelo_barbeiro_id | 3 ms | retorno={'Bloqueio não encontrado'}
-11/11/2026 : 22:04:36 | INFO | CHAMADA | buscar_bloqueio_pelo_barbeiro_id | args=() kwargs={'barbeiro_id': 2}
-11/11/2026 : 22:04:36 | INFO | OK        | buscar_bloqueio_pelo_barbeiro_id | 2 ms | retorno={1: 'Nome: Folga Barbeiro ID: 2 12/10/2026 08:00-> 12/10/2026 18:00', 2: 'Nome: Feriado Consciência Negra Barbeiro ID: 2 20/11/2026 09:00-> 20/11/2026 18:00'}
-11/11/2026 : 22:05:28 | INFO | CHAMADA | buscar_barbeiro_pelo_nome | args=() kwargs={'nome': 'fernando'}
-11/11/2026 : 22:05:28 | INFO | OK        | buscar_barbeiro_pelo_nome | 6 ms | retorno=2. Fernando Souza | Ativo
-11/11/2026 : 22:05:31 | INFO | CHAMADA | listar_agendamento_barbeiro | args=() kwargs={'barbeiro_id': 2}
-11/11/2026 : 22:05:31 | INFO | OK        | listar_agendamento_barbeiro | 1 ms | retorno=
-Id do Barbeiro: 6
-Id do Cliente: 2
-Serviço: 1
-Data: 20/11/2026 10:00
-Fim: 20/11/2026 10:30
-Status: Confirmado
-11/11/2026 : 22:06:20 | INFO | CHAMADA | buscar_bloqueio_pelo_barbeiro_id | args=() kwargs={'barbeiro_id': 2}
-11/11/2026 : 22:06:20 | INFO | OK        | buscar_bloqueio_pelo_barbeiro_id | 1 ms | retorno={1: 'Nome: Folga Barbeiro ID: 2 12/10/2026 08:00-> 12/10/2026 18:00', 2: 'Nome: Feriado Consciência Negra Barbeiro ID: 2 20/11/2026 09:00-> 20/11/2026 18:00'}
-11/11/2026 : 22:06:41 | INFO | CHAMADA | listar_agendamento_barbeiro | args=() kwargs={'barbeiro_id': 2}
-11/11/2026 : 22:06:41 | INFO | OK        | listar_agendamento_barbeiro | 2 ms | retorno=
-Id do Barbeiro: 6
-Id do Cliente: 2
-Serviço: 1
-Data: 20/11/2026 10:00
-Fim: 20/11/2026 10:30
-Status: Confirmado
-11/11/2026 : 22:06:45 | INFO | CHAMADA | cancelar_agendamento | args=() kwargs={'id': 6}
-11/11/2026 : 22:06:45 | INFO | OK        | cancelar_agendamento | 10 ms | retorno=Agendamento cancelado com sucesso!
-11/11/2026 : 22:08:54 | INFO | CHAMADA | buscar_cliente_pelo_nome | args=() kwargs={'nome': 'lucas'}
-11/11/2026 : 22:08:54 | INFO | OK        | buscar_cliente_pelo_nome | 4 ms | retorno=12. Lucas Barbosa | lucas.barbosa@email.com | tel: 71988001012 | data de nascimento: 01/10/1989 | Ativo: True
-11/11/2026 : 22:08:54 | INFO | CHAMADA | listar_servicos | args=() kwargs={}
-11/11/2026 : 22:08:55 | INFO | OK        | listar_servicos | 2 ms | retorno={1: 'Corte de Cabelo | 30min | R$35.00', 2: 'Barba | 20min | R$23.00', 3: 'Corte + Barba | 50min | R$55.00'}
-11/11/2026 : 22:08:55 | INFO | CHAMADA | buscar_barbeiro_pelo_nome | args=() kwargs={'nome': 'carlos'}
-11/11/2026 : 22:08:55 | INFO | OK        | buscar_barbeiro_pelo_nome | 2 ms | retorno=1. Carlos Silva | Ativo
-11/11/2026 : 22:08:59 | INFO | CHAMADA | buscar_bloqueio_pelo_barbeiro_id | args=() kwargs={'barbeiro_id': 1}
-11/11/2026 : 22:08:59 | INFO | OK        | buscar_bloqueio_pelo_barbeiro_id | 1 ms | retorno={1: 'Nome: Dentista Barbeiro ID: 1 06/10/2026 09:00-> 06/10/2026 10:00', 2: 'Nome: Reunião Barbeiro ID: 1 06/10/2026 17:00-> 06/10/2026 18:00', 3: 'Nome: Viagem Barbeiro ID: 1 26/10/2026 09:00-> 26/10/2026 18:00', 4: 'Nome: Feriado Consciência Negra Barbeiro ID: 1 20/11/2026 09:00-> 20/11/2026 18:00
-11/11/2026 : 22:09:04 | INFO | CHAMADA | agendamentos_disponiveis_dia_por_barbeiro | args=() kwargs={'barbeiro_id': 1, 'data': '20/11/2026'}
-11/11/2026 : 22:09:04 | INFO | OK        | agendamentos_disponiveis_dia_por_barbeiro | 21 ms | retorno=['20/11/2026 09:00', '20/11/2026 09:30', '20/11/2026 10:00', '20/11/2026 10:30', '20/11/2026 11:00', '20/11/2026 11:30', '20/11/2026 12:00', '20/11/2026 12:30', '20/11/2026 13:00', '20/11/2026 13:30', '20/11/2026 14:00', '20/11/2026 14:30', '20/11/2026 15:00', '20/11/2026 15:30', '20/11/2026 16:00',
+17/11/2026 : 09:48:04 | INFO | CHAMADA | listar_barbeiros | args=() kwargs={}
+17/11/2026 : 09:48:04 | INFO | CHAMADA | listar_servicos | args=() kwargs={}
+17/11/2026 : 09:48:04 | INFO | OK        | listar_barbeiros | 1 ms | retorno={1: 'Carlos Silva | Ativo', 2: 'Fernando Souza | Ativo', 3: 'Adonias Lima | Ativo'}
+17/11/2026 : 09:48:04 | INFO | OK        | listar_servicos | 1 ms | retorno={1: 'Corte de Cabelo | 30min | R$35.00', 2: 'Barba | 20min | R$23.00', 3: 'Corte + Barba | 50min | R$55.00'}
+17/11/2026 : 09:48:09 | INFO | CHAMADA | agendamentos_disponiveis_dia_por_barbeiro | args=() kwargs={'barbeiro_id': 1, 'data': '19/11/2026'}
+17/11/2026 : 09:48:09 | INFO | CHAMADA | agendamentos_disponiveis_dia_por_barbeiro | args=() kwargs={'barbeiro_id': 3, 'data': '19/11/2026'}
+17/11/2026 : 09:48:09 | INFO | OK        | agendamentos_disponiveis_dia_por_barbeiro | 11 ms | retorno=['19/11/2026 09:00', '19/11/2026 09:30', '19/11/2026 10:00', '19/11/2026 10:30', '19/11/2026 11:00', '19/11/2026 11:30', '19/11/2026 12:00', '19/11/2026 12:30', '19/11/2026 13:00', '19/11/2026 13:30', '19/11/2026 14:00', '19/11/2026 14:30', '19/11/2026 15:00', '19/11/2026 15:30', '19/11/2026 16:00',
+17/11/2026 : 09:48:09 | INFO | OK        | agendamentos_disponiveis_dia_por_barbeiro | 5 ms | retorno=['19/11/2026 09:00', '19/11/2026 09:30', '19/11/2026 10:00', '19/11/2026 10:30', '19/11/2026 11:00', '19/11/2026 11:30', '19/11/2026 12:00', '19/11/2026 12:30', '19/11/2026 13:00', '19/11/2026 13:30', '19/11/2026 14:00', '19/11/2026 14:30', '19/11/2026 15:00', '19/11/2026 15:30', '19/11/2026 16:00',
+17/11/2026 : 09:48:09 | INFO | CHAMADA | agendamentos_disponiveis_dia_por_barbeiro | args=() kwargs={'barbeiro_id': 2, 'data': '19/11/2026'}
+17/11/2026 : 09:48:09 | INFO | OK        | agendamentos_disponiveis_dia_por_barbeiro | 5 ms | retorno=['19/11/2026 10:00', '19/11/2026 10:30', '19/11/2026 11:00', '19/11/2026 11:30', '19/11/2026 12:00', '19/11/2026 12:30', '19/11/2026 13:00', '19/11/2026 13:30', '19/11/2026 14:00', '19/11/2026 14:30', '19/11/2026 15:00', '19/11/2026 15:30', '19/11/2026 16:00', '19/11/2026 16:30', '19/11/2026 17:00',
+17/11/2026 : 09:49:20 | INFO | CHAMADA | buscar_cliente_pelo_email | args=() kwargs={'email': 'cliente@exemplo.com'}
+17/11/2026 : 09:49:20 | INFO | OK        | buscar_cliente_pelo_email | 1 ms | retorno=Nome não encontrado
+17/11/2026 : 09:49:24 | INFO | CHAMADA | listar_clientes | args=() kwargs={}
+17/11/2026 : 09:49:24 | INFO | OK        | listar_clientes | 1 ms | retorno={1: ['Ana Beatriz Costa', 'ana.costa@email.com', '71988001001', '15/03/1995', 1], 2: ['Bruno Almeida', 'bruno.almeida@email.com', '71988001002', '22/07/1990', 1], 3: ['Camila Ferreira', 'camila.ferreira@email.com', '71988001003', '10/11/1998', 1], 4: ['Diego Santos', 'diego.santos@email.com', '71988
+17/11/2026 : 09:50:28 | INFO | CHAMADA | buscar_cliente_pelo_nome | args=() kwargs={'nome': 'Otávio Cardoso'}
+17/11/2026 : 09:50:28 | INFO | OK        | buscar_cliente_pelo_nome | 1 ms | retorno=15. Otávio Cardoso | otavio.cardoso@email.com | tel: 71988001015 | data de nascimento: 25/11/1987 | Ativo: True
+17/11/2026 : 09:50:31 | INFO | CHAMADA | agendamentos_disponiveis_dia_por_barbeiro | args=() kwargs={'barbeiro_id': 3, 'data': '19/11/2026'}
+17/11/2026 : 09:50:31 | INFO | OK        | agendamentos_disponiveis_dia_por_barbeiro | 4 ms | retorno=['19/11/2026 09:00', '19/11/2026 09:30', '19/11/2026 10:00', '19/11/2026 10:30', '19/11/2026 11:00', '19/11/2026 11:30', '19/11/2026 12:00', '19/11/2026 12:30', '19/11/2026 13:00', '19/11/2026 13:30', '19/11/2026 14:00', '19/11/2026 14:30', '19/11/2026 15:00', '19/11/2026 15:30', '19/11/2026 16:00',
+17/11/2026 : 09:50:34 | INFO | CHAMADA | buscar_barbeiro_pelo_nome | args=() kwargs={'nome': 'Otávio'}
+17/11/2026 : 09:50:34 | INFO | OK        | buscar_barbeiro_pelo_nome | 1 ms | retorno=Nome não encontrado
+17/11/2026 : 09:50:36 | INFO | CHAMADA | listar_barbeiros | args=() kwargs={}
+17/11/2026 : 09:50:36 | INFO | OK        | listar_barbeiros | 1 ms | retorno={1: 'Carlos Silva | Ativo', 2: 'Fernando Souza | Ativo', 3: 'Adonias Lima | Ativo'}
+17/11/2026 : 09:51:20 | INFO | CHAMADA | agendar_servico | args=() kwargs={'id_cliente': 15, 'barbeiro_id': 3, 'servico': 1, 'data_hora_inicio': '19/11/2026 16:30', 'data_hora_fim': '19/11/2026 17:00'}
+17/11/2026 : 09:51:20 | INFO | OK        | agendar_servico | 7 ms | retorno=Agendamento inserido com sucesso!
+17/11/2026 : 09:51:30 | INFO | CHAMADA | consultar_agendamento | args=() kwargs={'id': 16}
+17/11/2026 : 09:51:30 | INFO | OK        | consultar_agendamento | 3 ms | retorno=
+Id do Barbeiro: 1
+Id do Cliente: 3
+Serviço: 2
+Data: 10/09/2026 09:00
+Fim: 10/09/2026 09:20
+Status: confirmado
+17/11/2026 : 09:55:25 | INFO | CHAMADA | adicionar_servico | args=() kwargs={'nome': 'Platinação', 'duracao_minutos': 90, 'preco': 80.0}
+17/11/2026 : 09:55:25 | INFO | CHAMADA | adicionar_servico | args=() kwargs={'nome': 'Luzes', 'duracao_minutos': 90, 'preco': 60.0}
+17/11/2026 : 09:55:25 | INFO | OK        | adicionar_servico | 23 ms | retorno=Serviço inserido com sucesso!
+17/11/2026 : 09:55:25 | INFO | OK        | adicionar_servico | 38 ms | retorno=Serviço inserido com sucesso!
